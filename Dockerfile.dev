@@ -11,7 +11,9 @@ RUN apt-get update -qq && \
       pkg-config && \
     rm -rf /var/lib/apt/lists/*
 
-ENV BUNDLE_PATH="/usr/local/bundle"
+ENV BUNDLE_PATH="/bundle"
+ENV BUNDLE_BIN="/bundle/bin"
+ENV PATH="${BUNDLE_BIN}:${PATH}"
 
 COPY Gemfile Gemfile.lock ./
 

@@ -18,6 +18,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Documentation: ADR `0002-development-bind-mount-and-helper-scripts.md`.
 - API versioning architecture established under `Api::V1` namespace.
 - Configured CORS middleware (`rack-cors`) to allow cross-origin requests for local frontend development (`http://localhost:5173`).
+- Configured Devise and `devise-jwt` for user authentication.
+- Added custom `RegistrationsController` and `SessionsController` under `/api/v1`.
+- Updated database schema annotations on models using `annotate`.
 
 ### Removed
 

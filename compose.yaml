@@ -12,6 +12,7 @@ services:
 
     volumes:
       - .:/rails
+      - gems_data:/bundle
 
     environment:
       HOME: /tmp
@@ -41,3 +42,4 @@ services:
 
 volumes:
   postgres_data:
+  gems_data:
