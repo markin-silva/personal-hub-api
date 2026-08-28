@@ -17,6 +17,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added development helper scripts (`bin/dev` and `bin/run`).
 - Documentation: ADR `0002-development-bind-mount-and-helper-scripts.md`.
 - API versioning architecture established under `Api::V1` namespace.
+- Configured CORS middleware (`rack-cors`) to allow cross-origin requests for local frontend development (`http://localhost:5173`).
 
 ### Removed
 
