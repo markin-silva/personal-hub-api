@@ -14,10 +14,11 @@ This document serves as persistent memory regarding conventions, architecture, a
 - **PostgreSQL:** 17.10
 - **Testing:** RSpec (to be configured)
 
-## Execution Patterns via Docker
-All commands must run via Docker Compose:
-- **Execute Rails CLI:** `docker compose run --rm api bin/rails [command]`
-- **Start services in background:** `docker compose up -d db`
+## Execution Patterns via Helper Scripts
+Prefer using helper scripts from `bin/` instead of raw Docker commands:
+- **Start local environment:** `bin/dev`
+- **Execute Rails/Ruby commands:** `bin/run bin/rails [command]`
+- **Run specs:** `bin/run bundle exec rspec`
 
 ## Documentation Structure
 - `CHANGELOG.md`: Tracks notable changes per release using Keep a Changelog conventions.
