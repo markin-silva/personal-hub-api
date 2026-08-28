@@ -8,6 +8,9 @@ services:
     ports:
       - "3000:3000"
 
+    volumes:
+      - .:/rails
+
     environment:
       PGHOST: db
       PGUSER: personal_hub

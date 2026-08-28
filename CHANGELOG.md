@@ -8,6 +8,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [Unreleased]
 
 ### Added
+
+- Configured RSpec as testing framework (`rspec-rails`).
+- Configured bind mount volume mapping in `compose.yaml` for live host/container syncing.
 - Initial Rails API application bootstrap (Ruby 3.4.10, Rails 8.1.3).
 - Docker-first environment configuration with `Dockerfile.dev` and `compose.yaml` (PostgreSQL 17.10).
 - Project documentation setup (`AGENTS.md` and ADR `0001-docker-first-development.md`).
