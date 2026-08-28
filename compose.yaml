@@ -1,0 +1,37 @@
+services:
+  api:
+    image: personal-hub-api-dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+
+    ports:
+      - "3000:3000"
+
+    environment:
+      PGHOST: db
+      PGUSER: personal_hub
+      PGPASSWORD: personal_hub
+
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:17.10-bookworm
+
+    environment:
+      POSTGRES_USER: personal_hub
+      POSTGRES_PASSWORD: personal_hub
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U personal_hub -d postgres"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
