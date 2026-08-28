@@ -12,7 +12,8 @@ This document serves as persistent memory regarding conventions, architecture, a
 - **Ruby:** 3.4.10
 - **Rails:** 8.1.3 (API Mode)
 - **PostgreSQL:** 17.10
-- **Testing:** RSpec (to be configured)
+- **Testing:** RSpec
+- **API Architecture:** All application endpoints must be versioned under `Api::V1` namespace (`app/controllers/api/v1/`).
 
 ## Execution Patterns via Helper Scripts
 Prefer using helper scripts from `bin/` instead of raw Docker commands:

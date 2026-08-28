@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Project documentation setup (`AGENTS.md` and ADR `0001-docker-first-development.md`).
 - Added development helper scripts (`bin/dev` and `bin/run`).
 - Documentation: ADR `0002-development-bind-mount-and-helper-scripts.md`.
+- API versioning architecture established under `Api::V1` namespace.
 
 ### Removed
 
