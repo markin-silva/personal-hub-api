@@ -7,6 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Production environment configuration for Render deployment with Neon PostgreSQL.
+- CORS configuration updated to support production frontend domain via `FRONTEND_URL` environment variable.
+- Database configuration updated to read from `DATABASE_URL` environment variable for production.
+- SSL configuration enabled in production with proper handling for reverse proxies.
+
 ## [0.1.0] - 2026-10-14
 
 ### Added
