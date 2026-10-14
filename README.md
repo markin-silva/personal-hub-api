@@ -2,8 +2,6 @@
 
 A modular Ruby on Rails REST API serving as the backend engine for personal life tracking modules. The API is built with a Docker-first approach and designed for scalability, maintainability, and seamless integration with modern frontend applications.
 
-**Current Focus:** Workout Module — tracking exercises, workout plans, and session execution.
-
 ## Tech Stack
 
 | Component | Version |
@@ -28,7 +26,6 @@ A modular Ruby on Rails REST API serving as the backend engine for personal life
 
 - Docker & Docker Compose
 - Git
-- (Optional) VS Code with Remote - Containers extension
 
 ### Getting Started
 
@@ -38,16 +35,17 @@ A modular Ruby on Rails REST API serving as the backend engine for personal life
    cd personal-hub-api
    ```
 
-2. **Start the development environment:**
+2. **Build the Docker image:**
+   ```bash
+   docker compose build
+   ```
+   This builds the development Docker image with Ruby, Rails, and all dependencies. Run this once after cloning or when dependencies change.
+
+3. **Start the development environment:**
    ```bash
    bin/dev
    ```
    This command starts PostgreSQL, Rails server, and other services defined in `compose.yaml`. The Rails app runs at `http://localhost:3000`.
-
-3. **Verify the API is running:**
-   ```bash
-   curl http://localhost:3000/api/v1/health
-   ```
 
 ### Common Development Tasks
 
@@ -76,58 +74,6 @@ bin/run bin/rails console
 
 All endpoints are versioned under `/api/v1`. The API uses JWT Bearer token authentication (except for registration and login).
 
-### Health & System
-
-- **`GET /api/v1/health`**  
-  Returns system status and PostgreSQL connectivity.
-
-### Authentication
-
-- **`POST /api/v1/users`**  
-  Register a new user. Returns JWT token in `Authorization` header response.
-  ```json
-  {
-    "user": {
-      "email": "user@example.com",
-      "password": "secure_password"
-    }
-  }
-  ```
-
-- **`POST /api/v1/users/sign_in`**  
-  User login. Returns JWT Bearer token in `Authorization` header.
-  ```json
-  {
-    "user": {
-      "email": "user@example.com",
-      "password": "secure_password"
-    }
-  }
-  ```
-
-- **`DELETE /api/v1/users/sign_out`**  
-  Revoke the current session (logout).
-
-### Workout Module
-
-- **`GET /api/v1/exercises`**  
-  Fetch all exercises (global catalog and user-custom).
-
-- **`POST /api/v1/exercises`**  
-  Create a custom exercise.
-
-- **`GET /api/v1/workout_plans`**  
-  Fetch all workout plans.
-
-- **`POST /api/v1/workout_plans`**  
-  Create a new workout plan.
-
-- **`GET /api/v1/workout_sessions`**  
-  Fetch all workout session history.
-
-- **`POST /api/v1/workout_sessions`**  
-  Log a new workout session execution.
-
 ## Production Deployment
 
 ### Deployment Platform
@@ -145,27 +91,6 @@ The following environment variables must be set in your Render Web Service:
 | `RAILS_MASTER_KEY` | Credentials encryption key | (generated locally, set in Render secrets) |
 | `FRONTEND_URL` | Production frontend domain for CORS | `https://personal-hub.example.com` |
 | `PORT` | Server port (default: 3000) | `3000` |
-
-### Deployment Steps
-
-1. **Create a Render Web Service:**
-   - Connect your GitHub repository.
-   - Set Runtime: Docker.
-   - Configure Environment Variables (see table above).
-
-2. **Configure Neon PostgreSQL:**
-   - Create a Neon project and database.
-   - Copy the connection string to `DATABASE_URL`.
-
-3. **Deployment Behavior:**
-   - The Docker entrypoint automatically runs database migrations (`db:prepare`) and seeds on startup.
-   - HTTPS is enforced; SSL redirect excludes the health check endpoint (`/up`).
-   - CORS is configured to accept requests from `FRONTEND_URL`.
-
-4. **Verify Deployment:**
-   ```bash
-   curl https://your-api.onrender.com/api/v1/health
-   ```
 
 ## Repository Guidelines
 
@@ -240,10 +165,6 @@ To rebuild containers from scratch:
 docker-compose -f compose.yaml down -v
 bin/dev
 ```
-
-## License
-
-(Add your license here if applicable.)
 
 ## Support
 
