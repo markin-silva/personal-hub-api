@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - CORS configuration updated to support production frontend domain via `FRONTEND_URL` environment variable.
 - Database configuration updated to read from `DATABASE_URL` environment variable for production.
 - SSL configuration enabled in production with proper handling for reverse proxies.
+- Docker entrypoint script updated to automatically run database migrations (`db:prepare`) and seeds (`db:seed`) on server startup.
 
 ## [0.1.0] - 2026-10-14
 
